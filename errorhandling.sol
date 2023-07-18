@@ -19,7 +19,7 @@ contract ErrorHandling {
         // Reduce the balance by the amount entered
         balance -= _amount;
 
-        // Using revert() to explicitly revert state changes is the balance is zero and user tries to withdraw
+        // Using revert() to explicitly revert state changes,because the balance becomes zero and if user withdraw
         if (balance == 0) {
             revert("Balance will become zero, can't withdraw"); // Revert and provide an error message
         }

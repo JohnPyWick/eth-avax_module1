@@ -21,7 +21,7 @@ contract ErrorHandling {
 
         // Using revert() to explicitly revert state changes is the balance is zero and user tries to withdraw
         if (balance == 0) {
-            revert("Balance is zero can't withdraw"); // Revert and provide an error message
+            revert("Balance will become zero, can't withdraw"); // Revert and provide an error message
         }
     }
 

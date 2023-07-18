@@ -1,29 +1,28 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract AssertionContract {
+contract ErrorHandling {
     int public balance;
 
-    function setValue(int _value) public {
-        // Use require() to validate input conditions
-        require(_value > 0, "Value must be greater than zero");
-
-        // Use assert() to perform internal consistency checks
-        assert(_value != 42);
-
-        balance = _value;
+    function deposit(int _amount) public {
+        // Use require() to check if the amount is greater than zero
+        require(_amount > 0, "Balance must be greater than zero");
+        
+        // Increase the balance by the amount entered
+        balance += _amount;
     }
 
     function withdraw(int _amount) public {
-        // Use require() to enforce certain conditions
-        require(_amount <= balance, "Insufficient balance");
+        // Using asseert to check if balance is less than the amount being withdrawn
+        assert(_amount <= balance);
 
-        // Perform the withdrawal logic
+        // Reduce the balance by the amount entered
         balance -= _amount;
 
-        // Use revert() to explicitly revert state changes
+        // Using revert() to explicitly revert state changes is the balance is zero and user tries to withdraw
         if (balance == 0) {
-            revert("Value reached zero"); // Revert and provide an error message
+            revert("Balance is zero can't withdraw"); // Revert and provide an error message
         }
     }
+
 }

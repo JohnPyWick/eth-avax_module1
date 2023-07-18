@@ -26,9 +26,9 @@ contract ErrorHandling {
         // Reduce the balance by the amount entered
         balance -= _amount;
 
-        // Using revert() to explicitly revert state changes is the balance is zero and user tries to withdraw
+        // Using revert() to explicitly revert state changes,because the balance becomes zero and if user withdraw
         if (balance == 0) {
-            revert("Balance is zero can't withdraw"); // Revert and provide an error message
+            revert("Balance will become zero, can't withdraw"); // Revert and provide an error message
         }
     }
 
@@ -71,9 +71,9 @@ function withdraw(int _amount) public {
         // Perform the withdrawal logic
         balance -= _amount;
 
-        // Use revert() to explicitly revert state changes
+        // Using revert() to explicitly revert state changes,because the balance becomes zero and if user withdraw
         if (balance == 0) {
-            revert("Value reached zero"); // Revert and provide an error message
+            revert("Balance will become zero, can't withdraw"); // Revert and provide an error message
         }
     }
 
